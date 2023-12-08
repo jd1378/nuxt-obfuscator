@@ -38,12 +38,10 @@ export default defineNuxtModule<ModuleOptions>({
   },
   // Default configuration options of the Nuxt module
   defaults: {
-    mapFile: defaultOptions.mapFile,
-    nameLength: defaultOptions.nameLength,
+    ...defaultOptions,
     defaultExtensions: [],
     exclude: [],
     excludeClassNames: [],
-    dev: defaultOptions.dev,
   },
   async setup(options, nuxt) {
     const resolver = createResolver(import.meta.url);
