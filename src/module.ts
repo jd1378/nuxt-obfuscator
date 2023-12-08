@@ -99,7 +99,6 @@ export default defineNuxtModule<ModuleOptions>({
         },
       };
     });
-    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
     addVitePlugin(
       obfuscatorVitePlugin(options, cName => {
         return classMapping[cName] || cName;
