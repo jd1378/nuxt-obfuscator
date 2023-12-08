@@ -80,31 +80,37 @@ export default defineNuxtModule<ModuleOptions>({
       }
     }
 
-    nuxt.hook('build:before', () => {
-      nuxt.options.postcss.plugins = {
-        ...nuxt.options.postcss.plugins,
-        [pluginPath]: {
-          moduleOptions: options,
-          isNameUnique(className: string) {
-            return !(className in classMappingInverted);
+    const shouldRandomize =
+      process.env.NODE_ENV === 'production' ||
+      (process.env.NODE_ENV !== 'production' && options.dev);
+
+    if (shouldRandomize) {
+      nuxt.hook('build:before', () => {
+        nuxt.options.postcss.plugins = {
+          ...nuxt.options.postcss.plugins,
+          [pluginPath]: {
+            moduleOptions: options,
+            isNameUnique(className: string) {
+              return !(className in classMappingInverted);
+            },
+            getObfuscatedName(className: string) {
+              return classMapping[className];
+            },
+            onAddToMap(className: string, generatedName: string) {
+              classMapping[className] = generatedName;
+              classMappingInverted[generatedName] = className;
+            },
+            async onFinish() {
+              await updateClassMappingFile();
+            },
           },
-          getObfuscatedName(className: string) {
-            return classMapping[className];
-          },
-          onAddToMap(className: string, generatedName: string) {
-            classMapping[className] = generatedName;
-            classMappingInverted[generatedName] = className;
-          },
-          async onFinish() {
-            await updateClassMappingFile();
-          },
-        },
-      };
-    });
-    addVitePlugin(
-      obfuscatorVitePlugin(options, cName => {
-        return classMapping[cName] || cName;
-      }),
-    );
+        };
+      });
+      addVitePlugin(
+        obfuscatorVitePlugin(options, cName => {
+          return classMapping[cName] || cName;
+        }),
+      );
+    }
   },
 });

@@ -1,7 +1,7 @@
 import type {Plugin} from 'vite';
 
 import type {ModuleOptions} from '../module';
-import {stringContains, stringEndsWith} from '../utils';
+import {stringContains, stringEndsWith} from '../runtime/postcss/utils';
 
 const classMatcher = /(class\w*?\s*=\s*(['"])?)(.*?)(\2)/gms;
 
@@ -12,7 +12,6 @@ export function obfuscatorVitePlugin(
   return {
     name: 'nuxt-obfuscator-template-mapper',
     enforce: 'pre',
-    apply: options.dev ? 'serve' : 'build',
     transform(code, id) {
       if (stringContains(id, options.exclude)) return;
       if (stringEndsWith(id, options.defaultExtensions)) {
