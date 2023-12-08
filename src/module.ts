@@ -48,7 +48,9 @@ export default defineNuxtModule<ModuleOptions>({
   async setup(options, nuxt) {
     const resolver = createResolver(import.meta.url);
     const rootResolver = createResolver(nuxt.options.rootDir);
-    const pluginPath = resolver.resolve('./postcss/class_name_obfuscator');
+    const pluginPath = resolver.resolve(
+      './runtime/postcss/class_name_obfuscator',
+    );
     const mapPath = rootResolver.resolve(options.mapFile);
 
     if (!options.defaultExtensions.length) {
