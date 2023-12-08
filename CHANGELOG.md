@@ -1,4 +1,16 @@
 
+## v1.1.3
+
+[compare changes](https://github.com/jd1378/nuxt-obfuscator/compare/v1.1.2...v1.1.3)
+
+### 🩹 Fixes
+
+- Put postcss plugin inside runtime dir to keep in dist ([dfdd7ac](https://github.com/jd1378/nuxt-obfuscator/commit/dfdd7ac))
+
+### ❤️ Contributors
+
+- Javad Mnjd ([@jd1378](http://github.com/jd1378))
+
 ## v1.1.2
 
 [compare changes](https://github.com/jd1378/nuxt-obfuscator/compare/v1.1.1...v1.1.2)
