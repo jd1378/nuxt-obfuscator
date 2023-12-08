@@ -1,9 +1,9 @@
 import {Rule} from 'postcss';
 import selectorParser from 'postcss-selector-parser';
 
-import type {ModuleOptions} from '../../module';
-import {RandomStringGenerator} from './RandomStringGenerator';
+import {RandomStringGenerator} from './random_string_generator';
 import {stringContains} from './utils';
+import type {ModuleOptions} from '../../module';
 
 export default function ({
   moduleOptions,
