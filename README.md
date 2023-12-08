@@ -28,11 +28,21 @@ export default defineNuxtConfig({
   modules: [
     // your other modules
     'nuxt-obfuscator'
-  ]
+  ],
+  obfuscator: {
+  // default config:
+  mapFile: 'obfuscation.map.json', // where to store class name mappings
+  nameLength: 7, // how many characters each class name should be
+  defaultExtensions: ['.html', '.vue', '.jsx', '.tsx', '.ts', '.js'], // which files to check for class names
+  exclude: ['node_modules'], // if path includes these keywords it will be ignored
+  dev: false, // if true, class names will be obfuscated in development
+  }
 })
 ```
 
-That's it! You can now use Nuxt Obfuscator in your Nuxt app ✨
+### Optional Steps (Recommended)
+
+3. Build the project once using `yarn generate` or `yarn build` to generate the obfuscation map and add it to git to keep the class names consistent across builds
 
 ## Development
 

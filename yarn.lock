@@ -1953,6 +1953,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash.invert@npm:^4":
+  version: 4.3.9
+  resolution: "@types/lodash.invert@npm:4.3.9"
+  dependencies:
+    "@types/lodash": "npm:*"
+  checksum: e3dd5067912a732c71cbd05c1076c736f572942695b0e1f9f54c024cae85b9e1877341035e401cecf6f6a6fec9aeffdcbadd4666826de54c6d8a13aea118e3e5
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*":
+  version: 4.14.202
+  resolution: "@types/lodash@npm:4.14.202"
+  checksum: 6064d43c8f454170841bd67c8266cc9069d9e570a72ca63f06bceb484cb4a3ee60c9c1f305c1b9e3a87826049fd41124b8ef265c4dd08b00f6766609c7fe9973
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:^20.10.3":
   version: 20.10.4
   resolution: "@types/node@npm:20.10.4"
@@ -6116,6 +6132,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.invert@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "lodash.invert@npm:4.3.0"
+  checksum: 3dc36048a61af7252cf01ada962f6e3608062ddcc40be5695bff11b01f21f290ef09fb157c742e7297c2290c6cdf7b8b8278f2a54bdcb99bd061be794bdd1e69
+  languageName: node
+  linkType: hard
+
 "lodash.isarguments@npm:^3.1.0":
   version: 3.1.0
   resolution: "lodash.isarguments@npm:3.1.0"
@@ -6559,6 +6582,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^5.0.4":
+  version: 5.0.4
+  resolution: "nanoid@npm:5.0.4"
+  bin:
+    nanoid: bin/nanoid.js
+  checksum: 28c22d3ff96ea9e6abc059813b8483890c1f52de0f185d8347b0ea205c5966530205c374f1f77492bb53dc5d649de5d36d6eade16645055eb9220dc62080c1b1
+  languageName: node
+  linkType: hard
+
 "napi-wasm@npm:^1.1.0":
   version: 1.1.0
   resolution: "napi-wasm@npm:1.1.0"
@@ -6935,6 +6967,7 @@ __metadata:
     "@nuxt/schema": "npm:^3.8.2"
     "@nuxt/test-utils": "npm:^3.8.1"
     "@nuxtjs/eslint-config-typescript": "npm:^12.1.0"
+    "@types/lodash.invert": "npm:^4"
     "@types/node": "npm:^20.10.3"
     "@typescript-eslint/eslint-plugin": "npm:^6.13.2"
     "@typescript-eslint/parser": "npm:^6.13.2"
@@ -6944,6 +6977,8 @@ __metadata:
     eslint-import-resolver-typescript: "npm:^3.6.1"
     eslint-plugin-import: "npm:^2.29.0"
     eslint-plugin-prettier: "npm:^5.0.1"
+    lodash.invert: "npm:^4.3.0"
+    nanoid: "npm:^5.0.4"
     nuxt: "npm:^3.8.2"
     prettier: "npm:^3.1.0"
     vitest: "npm:^0.33.0"
