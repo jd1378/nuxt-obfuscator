@@ -4,7 +4,7 @@
   "description": "a css class name obfuscator/mangler for nuxt",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jd1378/nuxt-obfuscator.git"
+    "url": "git@github.com:jd1378/nuxt-obfuscator.git"
   },
   "license": "MIT",
   "type": "module",
