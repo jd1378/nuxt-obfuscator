@@ -23,8 +23,8 @@ const defaultOptions: ModuleOptions = {
   mapFile: 'obfuscation.map.json',
   nameLength: 7,
   defaultExtensions: ['.html', '.vue', '.jsx', '.tsx'],
-  exclude: ['node_modules'],
-  excludeClassNames: [],
+  exclude: [],
+  excludeClassNames: [/^nuxt-.*$/, /^vue-.*$/],
   dev: false,
 };
 
@@ -58,6 +58,9 @@ export default defineNuxtModule<ModuleOptions>({
     }
     if (!options.exclude.length) {
       options.exclude = defaultOptions.exclude;
+    }
+    if (!options.excludeClassNames.length) {
+      options.excludeClassNames = defaultOptions.excludeClassNames;
     }
 
     const classMapping: Record<string, string> = {};

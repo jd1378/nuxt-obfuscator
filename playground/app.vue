@@ -1,10 +1,13 @@
 <template>
   <div class="flex justify-center items-center my-content">
     Nuxt module playground!
+    <div :class="dClass ? 'fooClass' : 'barClass'">what</div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const dClass = ref(false);
+</script>
 
 <style lang="css">
 html,
@@ -36,5 +39,13 @@ body,
 .my-content {
   width: 100%;
   height: 100%;
+}
+
+.fooClass {
+  color: orange;
+}
+
+.barClass {
+  color: yellow;
 }
 </style>

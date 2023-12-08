@@ -3,7 +3,8 @@ import type {Plugin} from 'vite';
 import type {ModuleOptions} from '../module';
 import {stringContains, stringEndsWith} from '../runtime/postcss/utils';
 
-const classMatcher = /(class\w*?\s*=\s*(['"])?)(.*?)(\2)/gms;
+const classMatcher = /(class.*?(["']))(.*?)(?=\2)/gms;
+const classExpressionsMatcher = /(["'])(.*?)(?=\1)/gm;
 
 export function obfuscatorVitePlugin(
   options: ModuleOptions,
@@ -18,21 +19,35 @@ export function obfuscatorVitePlugin(
         try {
           const transformedCode = code.replace(
             classMatcher,
-            (m: string, p1: string, _: string, p3: string, p4: string) => {
+            (m: string, p1: string, _: string, p3: string) => {
               if (m && p3) {
-                return `${p1}${p3
-                  .split(/\s+/)
-                  .map(getObfuscatedClassName)
-                  .join(' ')}${p4}`;
+                let replacement: string;
+                if (classExpressionsMatcher.test(p3)) {
+                  replacement =
+                    p1 +
+                    p3.replace(
+                      classExpressionsMatcher,
+                      (_, ep1, ep2) =>
+                        ep1 +
+                        ep2.split(/\s+/).map(getObfuscatedClassName).join(' '),
+                    );
+                } else {
+                  replacement = `${p1}${p3
+                    .split(/\s+/)
+                    .map(getObfuscatedClassName)
+                    .join(' ')}`;
+                }
+                return replacement;
               }
               return m;
             },
           );
           return {
             code: transformedCode,
+            map: null,
           };
         } catch (e) {
-          return {code};
+          return {code, map: null};
         }
       }
     },
