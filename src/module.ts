@@ -24,7 +24,7 @@ const defaultOptions: ModuleOptions = {
   nameLength: 7,
   defaultExtensions: ['.html', '.vue', '.jsx', '.tsx'],
   exclude: [],
-  excludeClassNames: [/^nuxt-.*$/, /^vue-.*$/],
+  excludeClassNames: [/^nuxt-.*$/, /^vue-.*$/, /^.*?(-enter.*|-leave.*)$/],
   dev: false,
 };
 
