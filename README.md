@@ -30,12 +30,13 @@ export default defineNuxtConfig({
     'nuxt-obfuscator'
   ],
   obfuscator: {
-  // default config:
-  mapFile: 'obfuscation.map.json', // where to store class name mappings
-  nameLength: 7, // how many characters each class name should be
-  defaultExtensions: ['.html', '.vue', '.jsx', '.tsx', '.ts', '.js'], // which files to check for class names
-  exclude: ['node_modules'], // if path includes these keywords it will be ignored
-  dev: false, // if true, class names will be obfuscated in development
+    // default config:
+    mapFile: 'obfuscation.map.json', // where to store class name mappings
+    nameLength: 7, // how many characters each class name should be
+    defaultExtensions: ['.html', '.vue', '.jsx', '.tsx', '.ts', '.js'], // which files to check for class names
+    exclude: ['node_modules'], // if path includes these keywords it will be ignored
+    excludeClassNames: [/^nuxt-.*$/, /^vue-.*$/, /^.*?(-enter.*|-leave.*)$/], // which class names to skip obfuscation and postcss transform. supports regex.
+    dev: false, // if true, class names will be obfuscated in development
   }
 })
 ```
